@@ -82,8 +82,6 @@ func MergeOverwrite(to, from, dst interface{}) error {
 		return err
 	}
 	json.Unmarshal(b, &result)
-	// fmt.Println(result)
-	// fmt.Println(toMap)
 	if err := mapstructure.Decode(toMap, dst); err != nil {
 		return errors.Wrap(err, "failed to decode")
 	}
