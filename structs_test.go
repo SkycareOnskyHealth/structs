@@ -2,6 +2,7 @@ package structs
 
 import (
 	// "reflect"
+	"fmt"
 	"testing"
 	"time"
 
@@ -9,17 +10,25 @@ import (
 )
 
 type testStruct struct {
-	String   string
-	Bool     bool
-	Integer  int
-	Float    float64
-	Time     time.Time
-	LargeNum testSubStruct
-	Decimal  decimal.Decimal
+	DataString   string
+	DataBool     bool
+	DataInteger  int
+	DataFloat    float64
+	DataTime     time.Time
+	DataLargeNum testSubStruct
+	DataDecimal  decimal.Decimal
 }
-
+type testStructCamelResult struct {
+	dataString   string
+	dataBool     bool
+	dataInteger  int
+	dataFloat    float64
+	dataTime     time.Time
+	dataLargeNum testSubStruct
+	dataDecimal  decimal.Decimal
+}
 type otherStruct struct {
-	String string
+	DataString string
 }
 
 type testSubStruct struct {
@@ -27,30 +36,62 @@ type testSubStruct struct {
 	IsZero  bool
 }
 
-func TestMergeOverwrite(t *testing.T) {
+func TestContainer(t *testing.T) {
+
 	to := testStruct{
-		String:  "default string",
-		Bool:    true,
-		Integer: 100,
-		Float:   float64(1.001112),
-		Time:    time.Now(),
-		LargeNum: testSubStruct{
+		DataString:  "default string",
+		DataBool:    true,
+		DataInteger: 100,
+		DataFloat:   float64(1.001112),
+		DataTime:    time.Now(),
+		DataLargeNum: testSubStruct{
 			IntPart: 1000,
 			IsZero:  false,
 		},
-		Decimal: decimal.NewFromFloat(1000),
+		DataDecimal: decimal.NewFromFloat(1000),
 	}
 	from := otherStruct{
-		String: "another string",
+		DataString: "another string",
 	}
+	testMergeOverwrite(t, from, to)
+	// testMergeOverwriteCamel(t, from, to)
+	testMerge(t, from)
+	testMergeToMap(t, to, from)
+}
+
+func testMergeOverwrite(t *testing.T, from otherStruct, to testStruct) {
 	var target testStruct
 	if err := MergeOverwrite(to, from, &target); err != nil {
 		t.Fatal(err)
 	}
-	// t.Logf("target: %+v", to)
-	// t.Logf("to: %+v", target)
-
-	if expected := from.String; target.String != expected {
-		t.Errorf("want %s got %s", expected, target.String)
+	if expected := from.DataString; target.DataString != expected {
+		t.Errorf("want %s got %s", expected, target.DataString)
 	}
+}
+func testMergeOverwriteCamel(t *testing.T, from otherStruct, to testStruct) {
+	var target testStructCamelResult
+	if err := MergeOverwriteCamel(to, from, &target); err != nil {
+		t.Fatal(err)
+	}
+	fmt.Printf("target : %+v\n", target)
+	if expected := from.DataString; target.dataString != expected {
+		t.Errorf("want %s got %s", expected, target.dataString)
+	}
+}
+func testMerge(t *testing.T, from otherStruct) {
+	var target testStruct
+	Merge(from, target)
+	if expected := from.DataString; target.DataString == expected {
+		t.Errorf("want %s got %s", expected, target.DataString)
+	}
+}
+func testMergeToMap(t *testing.T, to testStruct, from interface{}) {
+	_, err := MergeToMap(to, from)
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+func testConvertStringToMap(t *testing.T, str string) {
+	result := ConvertStringToMap(str)
+	fmt.Printf("convert to string map%v\n", result)
 }

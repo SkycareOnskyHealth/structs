@@ -45,7 +45,7 @@ Merge(dst, src interface{})
 ```
 MergeOverwrite(to, from, dst interface{})
 ```
-#### MergeOverwriteCamel
+#### MergeOverwriteCamel (not stable)
 > Merge 2 structs overwriten supported cammel case
 ```
 MergeOverwriteCamel(to, from, dst interface{})
@@ -54,6 +54,11 @@ MergeOverwriteCamel(to, from, dst interface{})
 > Merge 2 structs to map
 ```
 MergeToMap(to, from interface{}) (map[string]interface{}, error)
+```
+#### ConvertStringToMap
+> Convert string json to map
+```
+ConvertStringToMap(in string) map[string]interface{}
 ```
 
 ### Installation

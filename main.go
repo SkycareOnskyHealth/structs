@@ -3,6 +3,7 @@ package structs
 import (
 	"encoding/json"
 	"reflect"
+	"strings"
 
 	"github.com/fatih/structs"
 	"github.com/mitchellh/mapstructure"
@@ -119,8 +120,6 @@ func MergeOverwriteCamel(to, from, dst interface{}) error {
 		return err
 	}
 	json.Unmarshal(b, &result)
-	// fmt.Println(result)
-	// fmt.Println(toMap)
 	if err := mapstructure.Decode(result, dst); err != nil {
 		return errors.Wrap(err, "failed to decode")
 	}
@@ -153,6 +152,18 @@ func MergeToMap(to, from interface{}) (map[string]interface{}, error) {
 		delete(toMap, "Base")
 	}
 	return toMap, nil
+}
+
+// ConvertStringToMap convert string json to map
+func ConvertStringToMap(in string) map[string]interface{} {
+	var result map[string]interface{}
+	d := json.NewDecoder(strings.NewReader(in))
+	d.UseNumber()
+
+	if err := d.Decode(&result); err != nil {
+		return nil
+	}
+	return result
 }
 func mapBase(key string, value interface{}, org *(map[string]interface{})) {
 	result := *org
