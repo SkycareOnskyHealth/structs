@@ -36,7 +36,7 @@ To make creating struct for tests easier.
 ### Other function
 
 #### Merge
-> Merge receives two structs, and merges them excluding fields with tag name: `structs`, value "-"
+> Merge receives two POINTER of structs, and merges them excluding fields with tag name: `structs`, value "-"
 ```
 Merge(dst, src interface{})
 ```

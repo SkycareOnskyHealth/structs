@@ -53,9 +53,9 @@ func TestContainer(t *testing.T) {
 	from := otherStruct{
 		DataString: "another string",
 	}
-	testMergeOverwrite(t, from, to)
+	// testMergeOverwrite(t, from, to)
 	// testMergeOverwriteCamel(t, from, to)
-	testMerge(t, from)
+	testMerge(t, &from)
 	testMergeToMap(t, to, from)
 }
 
@@ -78,10 +78,10 @@ func testMergeOverwriteCamel(t *testing.T, from otherStruct, to testStruct) {
 		t.Errorf("want %s got %s", expected, target.dataString)
 	}
 }
-func testMerge(t *testing.T, from otherStruct) {
-	var target testStruct
-	Merge(from, target)
-	if expected := from.DataString; target.DataString == expected {
+func testMerge(t *testing.T, from *otherStruct) {
+	target := new(testStruct)
+	Merge(target, from)
+	if expected := from.DataString; target.DataString != expected {
 		t.Errorf("want %s got %s", expected, target.DataString)
 	}
 }
