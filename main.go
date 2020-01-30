@@ -5,10 +5,9 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/fatih/structs"
 	"github.com/mitchellh/mapstructure"
 	"github.com/onskycloud/marshaller"
-	"github.com/pkg/errors"
+	structs "github.com/onskycloud/structs-fatih"
 )
 
 // Merge receives two structs, and merges them excluding fields with tag name: `structs`, value "-"
@@ -84,7 +83,7 @@ func MergeOverwrite(to, from, dst interface{}) error {
 	}
 	json.Unmarshal(b, &result)
 	if err := mapstructure.Decode(toMap, dst); err != nil {
-		return errors.Wrap(err, "failed to decode")
+		return err
 	}
 	return nil
 }
@@ -121,7 +120,7 @@ func MergeOverwriteCamel(to, from, dst interface{}) error {
 	}
 	json.Unmarshal(b, &result)
 	if err := mapstructure.Decode(result, dst); err != nil {
-		return errors.Wrap(err, "failed to decode")
+		return err
 	}
 	return nil
 }
