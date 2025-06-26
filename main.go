@@ -5,9 +5,9 @@ import (
 	"reflect"
 	"strings"
 
+	"github.com/SkycareOnskyHealth/marshaller"
+	structs "github.com/SkycareOnskyHealth/structs-fatih"
 	"github.com/mitchellh/mapstructure"
-	"github.com/onskycloud/marshaller"
-	structs "github.com/onskycloud/structs-fatih"
 )
 
 // Merge receives two structs, and merges them excluding fields with tag name: `structs`, value "-"
