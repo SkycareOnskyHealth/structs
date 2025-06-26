@@ -5,6 +5,6 @@ go 1.13
 require (
 	github.com/AdrianLungu/decimal v0.0.0-20160513203630-9d980d3d4d03
 	github.com/mitchellh/mapstructure v1.1.2
-	github.com/SkycareOnskyHealth/marshaller v0.0.0-20191023123315-0a6e1912a507
-	github.com/SkycareOnskyHealth/structs-fatih v1.1.0
+	github.com/SkycareOnskyHealth/marshaller v1.0.1
+	github.com/SkycareOnskyHealth/structs-fatih v1.1.1
 )
