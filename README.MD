@@ -68,7 +68,7 @@ Request handler requires [Go](https://golang.org/) v1.11+ to run.
 Install the package.
 
 ```sh
-$ go get github.com/onskycloud/structs
+$ go get github.com/SkycareOnskyHealth/structs
 ```
 
 #### Kubernetes + Google Cloud
