@@ -1,8 +1,0 @@
-github.com/AdrianLungu/decimal v0.0.0-20160513203630-9d980d3d4d03 h1:c6bkw7WM0hm/TxMnPFhTYuPj+9BnklyPZuoox21VR4M=
-github.com/AdrianLungu/decimal v0.0.0-20160513203630-9d980d3d4d03/go.mod h1:9/eJh32Tuj2UIuAT4Tp2Ah6XueCU9Kk9tAgZHHVLIdM=
-github.com/mitchellh/mapstructure v1.1.2 h1:fmNYVwqnSfB9mZU6OS2O6GsXM+wcskZDuKQzvN1EDeE=
-github.com/mitchellh/mapstructure v1.1.2/go.mod h1:FVVH3fgwuzCH5S8UJGiWEs2h04kUh9fWfEaFds41c1Y=
-github.com/SkycareOnskyHealth/marshaller v0.0.0-20191023123315-0a6e1912a507 h1:dN3/hb8YukYJTs7CAcBxx0XU0fvqEjaNDkX1USg/tPw=
-github.com/SkycareOnskyHealth/marshaller v0.0.0-20191023123315-0a6e1912a507/go.mod h1:wet3AqmXBLMOM5Lq3rOC0aBECJRsnO0wnr9Z/8hxKHk=
-github.com/SkycareOnskyHealth/structs-fatih v1.1.0 h1:0QNv1g0SLEl2cmUE+jZA0KLq6W5ycYJoA+5E3lpl148=
-github.com/SkycareOnskyHealth/structs-fatih v1.1.0/go.mod h1:Pb7P2KWWrnRysfFGl0t8FBNCRhm3Of99nkbttW7B/6s=
